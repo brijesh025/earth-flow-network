@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -40,11 +41,13 @@ import {
   Calendar,
   Navigation,
   Target,
-  Zap
+  Zap,
+  ArrowLeft
 } from "lucide-react";
 import MapboxMap from "@/components/MapboxMap";
 
 const MunicipalDashboard = () => {
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("overview");
   const [selectedSites, setSelectedSites] = useState([
     { lng: 77.1200, lat: 28.7300, score: 85, type: 'landfill' },
@@ -106,9 +109,19 @@ const MunicipalDashboard = () => {
       <div className="bg-background border-b border-border sticky top-0 z-40">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-2xl font-bold text-foreground">Municipal Dashboard</h1>
-              <p className="text-muted-foreground">AI-Powered Waste Management Control Center</p>
+            <div className="flex items-center space-x-4">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => navigate("/")}
+                className="p-2 hover:bg-muted"
+              >
+                <ArrowLeft className="h-4 w-4" />
+              </Button>
+              <div>
+                <h1 className="text-2xl font-bold text-foreground">Municipal Dashboard</h1>
+                <p className="text-muted-foreground">AI-Powered Waste Management Control Center</p>
+              </div>
             </div>
             <div className="flex items-center space-x-4">
               <Badge variant="outline" className="bg-success/10 text-success border-success/20">

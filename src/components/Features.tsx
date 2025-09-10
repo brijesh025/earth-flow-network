@@ -29,7 +29,7 @@ const Features = () => {
       features: ["AI Item Recognition", "Geolocation Services", "Reward System", "Impact Tracking"],
       color: "text-primary",
       bgColor: "bg-primary/10",
-      link: "#citizens"
+      link: "/citizen-app"
     },
     {
       icon: <BarChart3 className="h-8 w-8" />,
@@ -49,7 +49,7 @@ const Features = () => {
       features: ["Product Listings", "Payment Processing", "Inventory Management", "Quality Assurance"],
       color: "text-success",
       bgColor: "bg-success/10",
-      link: "#ngos"
+      link: "/marketplace"
     }
   ];
 
@@ -140,7 +140,8 @@ const Features = () => {
                       className="w-full" 
                       onClick={() => window.location.href = feature.link}
                     >
-                      Explore Dashboard
+                      {feature.title === "Circular Marketplace" ? "Explore Marketplace" : 
+                       feature.title === "Citizen Mobile App" ? "Try Citizen App" : "Explore Dashboard"}
                     </Button>
                   </div>
                 )}
