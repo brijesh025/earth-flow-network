@@ -1,5 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { 
   Camera, 
   MapPin, 
@@ -27,7 +28,8 @@ const Features = () => {
       image: aiClassificationIcon,
       features: ["AI Item Recognition", "Geolocation Services", "Reward System", "Impact Tracking"],
       color: "text-primary",
-      bgColor: "bg-primary/10"
+      bgColor: "bg-primary/10",
+      link: "#citizens"
     },
     {
       icon: <BarChart3 className="h-8 w-8" />,
@@ -36,7 +38,8 @@ const Features = () => {
       image: dashboardIcon,
       features: ["Site Optimization", "Route Planning", "Compliance Tracking", "Impact Analytics"],
       color: "text-accent",
-      bgColor: "bg-accent/10"
+      bgColor: "bg-accent/10",
+      link: "/municipal-dashboard"
     },
     {
       icon: <ShoppingCart className="h-8 w-8" />,
@@ -45,7 +48,8 @@ const Features = () => {
       image: marketplaceIcon,
       features: ["Product Listings", "Payment Processing", "Inventory Management", "Quality Assurance"],
       color: "text-success",
-      bgColor: "bg-success/10"
+      bgColor: "bg-success/10",
+      link: "#ngos"
     }
   ];
 
@@ -128,6 +132,18 @@ const Features = () => {
                     </div>
                   ))}
                 </div>
+                {feature.link && (
+                  <div className="mt-4">
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="w-full" 
+                      onClick={() => window.location.href = feature.link}
+                    >
+                      Explore Dashboard
+                    </Button>
+                  </div>
+                )}
               </CardContent>
             </Card>
           ))}

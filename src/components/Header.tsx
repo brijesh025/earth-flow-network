@@ -8,7 +8,7 @@ const Header = () => {
   const navigation = [
     { name: "Features", href: "#features" },
     { name: "For Citizens", href: "#citizens" },
-    { name: "For Municipalities", href: "#municipalities" },
+    { name: "For Municipalities", href: "/municipal-dashboard" },
     { name: "For NGOs", href: "#ngos" },
     { name: "Impact", href: "#impact" },
   ];
