@@ -1,16 +1,16 @@
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { 
-  Recycle, 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Twitter, 
-  Linkedin, 
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Twitter,
+  Linkedin,
   Facebook,
   Instagram,
-  ArrowRight
+  ArrowRight,
 } from "lucide-react";
+import logo from "@/../public/logo1.png";
 
 const Footer = () => {
   const links = {
@@ -40,7 +40,7 @@ const Footer = () => {
       { name: "Terms of Service", href: "#" },
       { name: "Cookie Policy", href: "#" },
       { name: "Compliance", href: "#" },
-    ]
+    ],
   };
 
   const socialLinks = [
@@ -59,7 +59,8 @@ const Footer = () => {
             Join the Waste Management Revolution
           </h3>
           <p className="text-primary-foreground/80 mb-6 max-w-2xl mx-auto">
-            Get updates on new features, sustainability insights, and community impact stories
+            Get updates on new features, sustainability insights, and community
+            impact stories
           </p>
           <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
             <input
@@ -80,19 +81,37 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
           {/* Brand Column */}
           <div className="lg:col-span-2">
-            <div className="flex items-center space-x-3 mb-4">
-              <div className="p-2 bg-gradient-primary rounded-lg">
-                <Recycle className="h-6 w-6 text-primary-foreground" />
+            <a
+              href="/"
+              className="flex items-center space-x-3 mb-4 group"
+              aria-label="Kairoon home"
+            >
+              <div className="relative h-11 w-11 flex items-center justify-center rounded-xl overflow-hidden bg-[hsl(var(--primary))/0.15] border border-[hsl(var(--primary))/0.4] shadow-soft">
+                <img
+                  src={logo}
+                  alt="Kairoon logo"
+                  className="h-full w-full object-contain p-1.5 group-hover:scale-105 transition-transform"
+                  loading="lazy"
+                  decoding="async"
+                  width={44}
+                  height={44}
+                />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-foreground">WasteWise</h1>
-                <p className="text-xs text-muted-foreground">AI-Enabled Waste Management</p>
+                <h1 className="text-xl font-semibold tracking-wide text-foreground group-hover:text-accent transition-colors">
+                  Kairoon
+                </h1>
+                <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground/70">
+                  Sustainability • Inclusivity
+                </p>
               </div>
-            </div>
+            </a>
             <p className="text-muted-foreground mb-6 max-w-sm">
-              Transforming waste into sustainable livelihoods through AI-powered inclusive waste management solutions.
+              Catalyzing circular economies by turning discarded materials into
+              opportunity — a unified platform for citizens, municipalities,
+              NGOs and ethical marketplaces.
             </p>
-            
+
             {/* Contact Info */}
             <div className="space-y-2 text-sm">
               <div className="flex items-center text-muted-foreground">
@@ -101,7 +120,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center text-muted-foreground">
                 <Mail className="h-4 w-4 mr-2" />
-                hello@wastewise.ai
+                hello@kairoon.earth
               </div>
               <div className="flex items-center text-muted-foreground">
                 <Phone className="h-4 w-4 mr-2" />
@@ -116,8 +135,8 @@ const Footer = () => {
             <ul className="space-y-3">
               {links.product.map((link, index) => (
                 <li key={index}>
-                  <a 
-                    href={link.href} 
+                  <a
+                    href={link.href}
                     className="text-muted-foreground hover:text-foreground transition-colors duration-200"
                   >
                     {link.name}
@@ -133,8 +152,8 @@ const Footer = () => {
             <ul className="space-y-3">
               {links.company.map((link, index) => (
                 <li key={index}>
-                  <a 
-                    href={link.href} 
+                  <a
+                    href={link.href}
                     className="text-muted-foreground hover:text-foreground transition-colors duration-200"
                   >
                     {link.name}
@@ -150,8 +169,8 @@ const Footer = () => {
             <ul className="space-y-3">
               {links.resources.map((link, index) => (
                 <li key={index}>
-                  <a 
-                    href={link.href} 
+                  <a
+                    href={link.href}
                     className="text-muted-foreground hover:text-foreground transition-colors duration-200"
                   >
                     {link.name}
@@ -167,8 +186,8 @@ const Footer = () => {
             <ul className="space-y-3">
               {links.legal.map((link, index) => (
                 <li key={index}>
-                  <a 
-                    href={link.href} 
+                  <a
+                    href={link.href}
                     className="text-muted-foreground hover:text-foreground transition-colors duration-200"
                   >
                     {link.name}
@@ -186,9 +205,10 @@ const Footer = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div className="flex flex-col md:flex-row items-center justify-between">
           <div className="text-muted-foreground text-sm mb-4 md:mb-0">
-            © 2024 WasteWise. All rights reserved. Building a sustainable future, one community at a time.
+            © 2025 Kairoon. All rights reserved. Advancing timely, inclusive
+            climate action.
           </div>
-          
+
           {/* Social Links */}
           <div className="flex items-center space-x-4">
             {socialLinks.map((social, index) => (

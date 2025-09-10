@@ -4,25 +4,47 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
 
+/* Kairoon Professional Button System
+ * Unified deep-green style for consistent brand voice.
+ * All primary-like variants share same base; semantics kept for future divergence.
+ */
+const baseSolid = [
+  // Subtle vertical gradient for depth (reference style)
+  "bg-[linear-gradient(145deg,hsl(var(--primary))_0%,hsl(var(--primary-alt))_60%,hsl(var(--primary))_100%)]",
+  "text-primary-foreground",
+  "shadow-[0_0_0_1px_hsl(var(--primary)/0.55),0_4px_10px_-2px_hsl(var(--primary)/0.5)]",
+  "hover:bg-[hsl(var(--primary))]/90",
+  "hover:shadow-[0_0_0_1px_hsl(var(--primary)/0.6),0_6px_14px_-2px_hsl(var(--primary)/0.55)]",
+  "active:bg-[hsl(var(--primary))]/80",
+  "active:shadow-[0_0_0_1px_hsl(var(--primary)/0.55),0_2px_6px_-1px_hsl(var(--primary)/0.45)]",
+  "focus-visible:ring-accent/50",
+  "disabled:shadow-none",
+].join(" ");
+
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "relative inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium tracking-tight ring-offset-background transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 active:scale-[.985]",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-soft hover:shadow-medium transition-all duration-300",
-        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
-        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80 shadow-soft",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
-        hero: "bg-gradient-primary text-primary-foreground hover:scale-105 shadow-medium hover:shadow-strong transition-all duration-300 font-semibold",
-        accent: "bg-accent text-accent-foreground hover:bg-accent/90 shadow-soft hover:shadow-medium transition-all duration-300",
-        success: "bg-success text-success-foreground hover:bg-success/90 shadow-soft hover:shadow-medium transition-all duration-300",
+        default: baseSolid,
+        hero:
+          baseSolid +
+          " h-12 px-8 text-base font-semibold hover:-translate-y-0.5",
+        secondary: baseSolid + " opacity-90 hover:opacity-100",
+        accent: baseSolid,
+        success: baseSolid,
+        outline:
+          "border border-[hsl(var(--primary)/0.6)] text-primary-foreground bg-transparent hover:bg-[hsl(var(--primary))/0.12] focus-visible:ring-accent/40",
+        ghost:
+          "text-primary-foreground/85 hover:text-primary-foreground hover:bg-[hsl(var(--primary))/0.12]",
+        destructive:
+          "bg-destructive text-destructive-foreground hover:bg-destructive/90 shadow-[0_0_0_1px_hsl(var(--destructive)/0.6)] focus-visible:ring-destructive/50",
+        link: "text-primary-foreground underline-offset-4 hover:underline px-0 h-auto",
       },
       size: {
-        default: "h-10 px-4 py-2",
-        sm: "h-9 rounded-md px-3",
-        lg: "h-11 rounded-md px-8",
+        default: "h-10 px-5",
+        sm: "h-8 px-3 text-xs",
+        lg: "h-12 px-8 text-base",
         icon: "h-10 w-10",
       },
     },
@@ -30,7 +52,7 @@ const buttonVariants = cva(
       variant: "default",
       size: "default",
     },
-  },
+  }
 );
 
 export interface ButtonProps
@@ -42,8 +64,14 @@ export interface ButtonProps
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "button";
-    return <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />;
-  },
+    return (
+      <Comp
+        className={cn(buttonVariants({ variant, size, className }))}
+        ref={ref}
+        {...props}
+      />
+    );
+  }
 );
 Button.displayName = "Button";
 
